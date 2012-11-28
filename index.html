@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0">
+    <link  rel="stylesheet" type="text/css" href="css/webworks.css"><link />
+    <link  rel="stylesheet" type="text/css" href="css/input.css"><link />
+	<link  rel="stylesheet" type="text/css" href="css/button.css"><link />
+	<script type="text/javascript" src="js/webworks.js"></script>
+	<script type="text/javascript" src="js/input.js"></script>
+	<link  rel="stylesheet" type="text/css" href="css/pillButtons.css"><link />
+<!--
+	<script type="text/javascript" src="js/pillButtons.js"></script>
+-->
+	<script type="text/javascript" src="js/rpgCompanion.js"></script>
+	<!-- hold this
+	<style type="text/css">
+			body {
+				background-image: url('images/stripes.png');
+			}
+			
+			.listSeparator
+			{
+				border-bottom: solid 1px Silver;
+			}
+
+			.tab
+			{
+				position:absolute;
+				top:50px;	
+				padding: 10px;
+			}
+
+			input 
+			{
+				display:inline; 
+				float:left;
+				font-family: BBAlpha Sans;
+				font-size: 16pt;
+				border: none;
+				padding-top: 0px;
+				width: 10px;
+				margin-top: 7px;
+			}
+			
+		</style>
+	  Hold this -->
+	<title>RPG Companion</title>
+	</head>
+<body>
+	<form method="post" id="charSheet">
+	<div x-ww-type="screen">
+			<div style="margin:15px;font-size:13pt;color:Gray;">
+				<p align="center">rpgCompanion Adventure Sheet</p>
+			</div>
+				<div x-ww-type="round-panel" id="mainList"> 
+				<div class="panel-header">Character Stats <input type="button" id="bldChar" value="New Character" onClick="bldPlayer()" /> 
+				<input type="button" id="clear" value="Clear" onClick="doClear()" />
+				<input type="button" id="about" value="About" onClick="doAlert()" /></div>
+					<div class="ww-label-control-row">
+						<div class="label">Skill</div> <input type="text" id="iSkill" size="2" readonly /> <input type="text" id="skill" size="3" readonly /> <input type="button" id="bPlus01" value="+" onClick="modStat(1, 0, 1)"/><input type="button" id="bMinus01" value=" - " onClick="modStat(1, 1, 1)"/>
+					</div>
+					<div class="listSeparator"></div>    
+					<div class="ww-label-control-row">
+						<div class="label">Stamina</div> <input type="text" id="iStamina" size="2" readonly /> <input type="text" id="stamina" size="3" readonly /> <input type="button" id="bPlus02" value="+" onClick="modStat(2, 0, 1)"/><input type="button" id="bMinus02" value=" - " onClick="modStat(2, 1, 1)"/>
+					</div>
+					<div class="listSeparator"></div>    
+					<div class="ww-label-control-row">
+						<div class="label">Luck</div> <input type="text" id="iLuck" size="2" readonly /> <input type="text" id="luck" size="3" readonly /> <input type="button" id="bPlus03" value="+" onClick="modStat(3, 0, 1)"/><input type="button" id="bMinus03" value=" - " onClick="modStat(3, 1, 1)"/>
+					</div>
+				</div>
+				
+				<div x-ww-type="round-panel" id="mainList"> 
+				<div class="panel-header">Character Stats</div>
+					<div class="ww-label-control-row">
+						<div class="label">Items of Equipment Carried</div> <textarea id="equip" columns="110" rows="2"></textarea></p>
+					</div>
+					<br clear="all" />
+					<div class="listSeparator"></div>    
+					<div class="ww-label-control-row">
+						<div class="label">Gold</div> <input type="text" id="gold" size="5" /><br />
+					</div>
+					<div class="listSeparator"></div>    
+					<div class="ww-label-control-row">
+						<div class="label">Jewels</div> <input type="text" id="jewels" size="5" /><br />
+					</div>
+					<div class="listSeparator"></div>    
+					<div class="ww-label-control-row">
+						<div class="label">Potions</div>
+						<input type="radio" id="rbSkill" name="potionType" /> Skill
+						<input type="radio" id="rbStamina" name="potionType" /> Stamina
+						<input type="radio" id="rbLuck" name="potionType" /> Luck | 
+						<input id="cbDose1" type="checkbox" onClick="drinkEm(1)"/> Dose 1 <input id="cbDose2" type="checkbox" onClick="drinkEm(2)"/> Dose 2 
+					</div>
+					<div class="listSeparator"></div>    
+					<div class="ww-label-control-row">
+						<div class="label">Provisions Remaining</div> <input type="text" id="mangia" size="3"/> <input type="button" id="bEat" value="Eat" onClick="eatEm()"/>
+					</div>
+				</div>
+				<div x-ww-type="round-panel" id="mainList"> 
+					<div class="panel-header">Encounter Sheet</div>
+					<div class='ww-label-control-row'>
+						<div class="label">Creature Skill <input type="text" id="cSkill" size="3" /></div>
+					</div>
+					<div class="ww-label-control-row">
+						<div class="label">Creature Stamina <input type="text" id="cStamina" size="3" /></div>
+					</div>
+					<div class="ww-label-control-row">
+						<input type="button" id="fight" value="Fight!" onClick="encounter()" />
+					</div>
+				</div>
+				<div x-ww-type="round-panel" id="mainList"> 
+				<div class="panel-header">Release Notes </div>
+					<p>I built this rpgCompanion app to help me play Fighting Fantasy games without needing to copy out the adventure sheet, or potentially destroying my book by constant pencil edits.</p>
+					<p>This is my first crack at the idea, although I have thought about it for a very long time. At one point, it was going to be an HTML page, and then an application for a portable device, and finally, a Java application.</p>
+					<p>None have come to pass... until now!</p>
+					<p>There are a few things that are not implemented in ths go-round that I hope I can fix up in a later revision...</p>
+					<ul>
+						<li>I want to add a general dice-throwing button, but this version will have to stand without it.</li>
+						<li>There is no support for trying your luck, either during regular play, or during an encounter. The extra dice-throwing feature would have helped here.</li>
+						<li>I based all of the logic on <em>The Warlock of Firetop Mountain</em>, but would like to be able to add on additional rules to support more robust volumes (<em>Creature of Havoc</em>, for example, has an instant-kill rule if you roll double-dice during an encounter).</li>
+						<li>The error checking may not be as robust as it could be, which could lead to some small cheats. Use them wisely, and sparingly to get the full effect of the game.</li>
+					</ul>	
+					<p>If you have any old Fighting Fantasy books lying around (who are we kidding, they're in pristine condition up on a book shelf, aren't they?), please try this out, and let me know what you think.</p>
+					<p>Michael Moskau<br/>February 29th 2012<br/>quatmosk@gmail.com</p>
+					<p>Concepts, structure and wording copyright &copy; 1982 Steve Jackson and Ian Livingstone</p>
+					<p><strong>Release 1.1</strong></p>
+					<ul>
+						<li>Fixed missing icon</li>
+					</ul>
+					<p><strong>Release 1.0</strong></p>
+					<ul>
+						<li>First release</li>
+					</ul>
+				</div>
+			</div>
+	</div>
+	</form>
+</body>
+</html>

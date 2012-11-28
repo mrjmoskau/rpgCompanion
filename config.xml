@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:rim="http://www.blackberry.com/ns/widgets" version="2.0.0.0">
+
+<name>rpgCompanion</name>
+<description>A tool to help play through Fighting Fantasy single-player RPG books</description>
+
+<rim:category name="games"/>	
+
+<author email="quatmosk@gmail.com">Michael Moskau</author>
+<icon src="images/rpgCompanion.png"/>
+<content src="index.html"/>
+<feature id="blackberry.app"/>
+</widget>
