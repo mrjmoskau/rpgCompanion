@@ -54,24 +54,31 @@
 				<p align="center">rpgCompanion Adventure Sheet</p>
 			</div>
 				<div x-ww-type="round-panel" id="mainList"> 
-				<div class="panel-header">Character Stats <input type="button" id="bldChar" value="New Character" onClick="bldPlayer()" /> 
-				<input type="button" id="clear" value="Clear" onClick="doClear()" />
-				<input type="button" id="about" value="About" onClick="doAlert()" /></div>
+				<div class="panel-header">Character - Stats </div>
+				<div class="listSeparator"></div>
+				<div class="ww-label-control-row">
+					<input type="button" id="bldChar" value="New Character" onClick="bldPlayer()" /> 
+					<input type="button" id="clear" value="Clear" onClick="doClear()" />
+					<input type="button" id="about" value="About" onClick="doAlert()" />
+				</div>
+				<div class="ww-label-control-row">
+					<div class="label">Name</div> <input type="text" id="charName" size="15" />
+				</div>
 					<div class="ww-label-control-row">
-						<div class="label">Skill</div> <input type="text" id="iSkill" size="2" readonly /> <input type="text" id="skill" size="3" readonly /> <input type="button" id="bPlus01" value="+" onClick="modStat(1, 0, 1)"/><input type="button" id="bMinus01" value=" - " onClick="modStat(1, 1, 1)"/>
+						<div class="label">Skill</div> <input type="text" id="iSkill" size="2" readonly /> <input type="text" id="skill" size="3" readonly /> <input type="button" id="bPlus01" value=" + " onClick="modStat(1, 0, 1)"/><input type="button" id="bMinus01" value=" - " onClick="modStat(1, 1, 1)"/>
 					</div>
-					<div class="listSeparator"></div>    
 					<div class="ww-label-control-row">
-						<div class="label">Stamina</div> <input type="text" id="iStamina" size="2" readonly /> <input type="text" id="stamina" size="3" readonly /> <input type="button" id="bPlus02" value="+" onClick="modStat(2, 0, 1)"/><input type="button" id="bMinus02" value=" - " onClick="modStat(2, 1, 1)"/>
+					<div class="label">Stamina</div> <input type="text" id="iStamina" size="2" readonly /> <input type="text" id="stamina" size="2" readonly /> <input type="button" id="bPlus02" value=" + " onClick="modStat(2, 0, 1)"/><input type="button" id="bMinus02" value=" - " onClick="modStat(2, 1, 1)"/>
 					</div>
-					<div class="listSeparator"></div>    
+			<!--		<div class="listSeparator"></div> -->   
 					<div class="ww-label-control-row">
-						<div class="label">Luck</div> <input type="text" id="iLuck" size="2" readonly /> <input type="text" id="luck" size="3" readonly /> <input type="button" id="bPlus03" value="+" onClick="modStat(3, 0, 1)"/><input type="button" id="bMinus03" value=" - " onClick="modStat(3, 1, 1)"/>
+						<div class="label">Luck</div> <input type="text" id="iLuck" size="2" readonly /> <input type="text" id="luck" size="2" readonly /> <input type="button" id="bPlus03" value=" + " onClick="modStat(3, 0, 1)"/><input type="button" id="bMinus03" value=" - " onClick="modStat(3, 1, 1)"/> <input type="button" id="testLuck" value="Test Your luck" onClick="testYourLuck()" />
+
 					</div>
 				</div>
 				
 				<div x-ww-type="round-panel" id="mainList"> 
-				<div class="panel-header">Character Stats</div>
+				<div class="panel-header">Character - Equipment</div>
 					<div class="ww-label-control-row">
 						<div class="label">Items of Equipment Carried</div> <textarea id="equip" columns="110" rows="2"></textarea></p>
 					</div>
@@ -100,10 +107,10 @@
 				<div x-ww-type="round-panel" id="mainList"> 
 					<div class="panel-header">Encounter Sheet</div>
 					<div class='ww-label-control-row'>
-						<div class="label">Creature Skill <input type="text" id="cSkill" size="3" /></div>
+						<div class="label">Creature Skill</div> <input type="text" id="cSkill" size="3" />
 					</div>
 					<div class="ww-label-control-row">
-						<div class="label">Creature Stamina <input type="text" id="cStamina" size="3" /></div>
+						<div class="label">Creature Stamina</div> <input type="text" id="cStamina" size="3" />
 					</div>
 					<div class="ww-label-control-row">
 						<input type="button" id="fight" value="Fight!" onClick="encounter()" />
@@ -124,6 +131,15 @@
 					<p>If you have any old Fighting Fantasy books lying around (who are we kidding, they're in pristine condition up on a book shelf, aren't they?), please try this out, and let me know what you think.</p>
 					<p>Michael Moskau<br/>February 29th 2012<br/>quatmosk@gmail.com</p>
 					<p>Concepts, structure and wording copyright &copy; 1982 Steve Jackson and Ian Livingstone</p>
+					<h2>Releases</h2>
+					<p><strong>Release 1.2</strong></p>
+					<ul>
+						<li>Added Character name, Test Your Luck button</li>
+						<li>Tweaked some HTML to better suit the look-and-feel</li>
+						<li>Moved the buttons</li>
+						<li>Clarified the section headings</li>
+						<li>Added some error handling for JavaScript (About button primarily)</li>
+					</ul>
 					<p><strong>Release 1.1</strong></p>
 					<ul>
 						<li>Fixed missing icon</li>

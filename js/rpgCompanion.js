@@ -8,6 +8,7 @@
 
 addEventListener('load',bldPlayer,false);
 
+// Let's make these global, shall we?
 var iSkill = null;
 var skill = null;
 var iStamina = null;
@@ -18,10 +19,16 @@ var jewels = null;
 var mangia = 10;
 
 function doAlert() {
-	alert('Welcome to ' + blackberry.app.name + '\nCreated by ' + blackberry.app.author +
-			'\nConcepts copyright 1982, Steve Jackson and Ian Livingstone');
+	if (typeof blackberry != 'undefined') {
+		alert('Welcome to ' + blackberry.app.name + '\nCreated by ' + blackberry.app.author + 
+		'\nConcepts copyright 1982, Steve Jackson and Ian Livingstone');
+	}
+	else {
+		alert('Welcome to the rpgCompanion\nCreated by Michael Moskau\nConcepts copyright 1982, Steve Jackson and Ian Livingstone');
+	}
 }
 function doClear() {
+	document.getElementById("charName").value="";
 	document.getElementById("iSkill").value = "";
 	document.getElementById("skill").value = "";
 	document.getElementById("iStamina").value = "";
@@ -137,8 +144,8 @@ function encounter() {
 		alert("You swing at shadows and air... enter values for your opponent!");
 	}
 	else {
-		var cAttack = null;
-		var pAttack = null;
+		var cAttack = null; //Creature attack
+		var pAttack = null; // Player attack
 		var cStamina = parseInt(document.getElementById("cStamina").value);
 
 		while ((cStamina > 0) && (stamina > 0)) {
@@ -162,4 +169,14 @@ function encounter() {
 			alert("You have been vanquished!");
 		}
 	}
+}
+function testYourLuck() {
+	var luckTest = parseInt(document.getElementById("luck").value);
+	if ( rollDie(2) <= luckTest ) {
+		alert("Whew, that was lucky!");
+	} else {
+		alert("Oh, what bad luck!");
+	}
+	luckTest -= 1;
+	document.getElementById("luck").value = luckTest.toString();
 }
